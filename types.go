@@ -8,6 +8,14 @@ const (
 	ComponentTextSizeL ComponentTextSize = "L"
 )
 
+type ComponentPlainTextSize string
+
+const (
+	ComponentPlainTextSizeS ComponentPlainTextSize = "S"
+	ComponentPlainTextSizeM ComponentPlainTextSize = "M"
+	ComponentPlainTextSizeL ComponentPlainTextSize = "L"
+)
+
 type ComponentTextColor string
 
 const (
@@ -16,6 +24,16 @@ const (
 	ComponentTextColorSuccess ComponentTextColor = "SUCCESS"
 	ComponentTextColorWarning ComponentTextColor = "WARNING"
 	ComponentTextColorError   ComponentTextColor = "ERROR"
+)
+
+type ComponentPlainTextColor string
+
+const (
+	ComponentPlainTextColorNormal  ComponentPlainTextColor = "NORMAL"
+	ComponentPlainTextColorMuted   ComponentPlainTextColor = "MUTED"
+	ComponentPlainTextColorSuccess ComponentPlainTextColor = "SUCCESS"
+	ComponentPlainTextColorWarning ComponentPlainTextColor = "WARNING"
+	ComponentPlainTextColorError   ComponentPlainTextColor = "ERROR"
 )
 
 type ComponentSpacerSize string
@@ -54,6 +72,12 @@ type ComponentText struct {
 	Text      string              `json:"text"`
 }
 
+type ComponentPlainText struct {
+	PlainTextSize  *ComponentPlainTextSize  `json:"plainTextSize,omitempty"`
+	PlainTextColor *ComponentPlainTextColor `json:"plainTextColor,omitempty"`
+	PlainText      string                   `json:"plainText"`
+}
+
 type ComponentDivider struct {
 	DividerSpacingSize *ComponentDividerSpacingSize `json:"dividerSpacingSize,omitempty"`
 }
@@ -79,6 +103,7 @@ type ComponentCopyButton struct {
 
 type ComponentRowContentUnionInput struct {
 	ComponentText       *ComponentText       `json:"componentText,omitempty"`
+	ComponentPlainText  *ComponentPlainText  `json:"componentPlainText,omitempty"`
 	ComponentDivider    *ComponentDivider    `json:"componentDivider,omitempty"`
 	ComponentLinkButton *ComponentLinkButton `json:"componentLinkButton,omitempty"`
 	ComponentSpacer     *ComponentSpacer     `json:"componentSpacer,omitempty"`
@@ -93,6 +118,7 @@ type ComponentRow struct {
 
 type ComponentContainerContentUnionInput struct {
 	ComponentText       *ComponentText       `json:"componentText,omitempty"`
+	ComponentPlainText  *ComponentPlainText  `json:"componentPlainText,omitempty"`
 	ComponentDivider    *ComponentDivider    `json:"componentDivider,omitempty"`
 	ComponentLinkButton *ComponentLinkButton `json:"componentLinkButton,omitempty"`
 	ComponentSpacer     *ComponentSpacer     `json:"componentSpacer,omitempty"`
@@ -107,6 +133,7 @@ type ComponentContainer struct {
 
 type Component struct {
 	ComponentText       *ComponentText       `json:"componentText,omitempty"`
+	ComponentPlainText  *ComponentPlainText  `json:"componentPlainText,omitempty"`
 	ComponentDivider    *ComponentDivider    `json:"componentDivider,omitempty"`
 	ComponentLinkButton *ComponentLinkButton `json:"componentLinkButton,omitempty"`
 	ComponentSpacer     *ComponentSpacer     `json:"componentSpacer,omitempty"`
