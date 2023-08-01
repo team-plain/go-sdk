@@ -32,7 +32,7 @@ func customerCardsHandler(w http.ResponseWriter, r *http.Request) {
 
 	ttl := 86400
 	resp := customercards.Response{
-		Cards: []*gosdk.CustomerCard{
+		Cards: []gosdk.CustomerCard{
 			getRandomCustomerCard(req.CardKeys[0], ttl),
 		},
 	}
@@ -45,9 +45,9 @@ func customerCardsHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func getRandomCustomerCard(key string, ttl int) *gosdk.CustomerCard {
+func getRandomCustomerCard(key string, ttl int) gosdk.CustomerCard {
 	mutedTextColor := gosdk.ComponentTextColorMuted
-	return &gosdk.CustomerCard{
+	return gosdk.CustomerCard{
 		Key:               key,
 		TimeToLiveSeconds: &ttl,
 		Components: []gosdk.Component{
